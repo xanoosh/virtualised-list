@@ -12,7 +12,7 @@ export default function VirtualisedList({
   const virtualizer = useVirtualizer({
     count: listItems?.length || 0,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => 120,
+    estimateSize: () => 100,
   });
 
   const virtualItems = virtualizer.getVirtualItems();
@@ -22,7 +22,7 @@ export default function VirtualisedList({
     <>
       <div
         ref={parentRef}
-        className="overflow-auto h-56 border border-slate-400"
+        className="overflow-auto h-80 border border-slate-600 rounded-sm px-4 py-2"
       >
         <ul
           className="list-disc relative w-full"

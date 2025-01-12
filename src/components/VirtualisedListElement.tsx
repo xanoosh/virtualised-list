@@ -7,7 +7,7 @@ export default function VirtualisedListElement({
 }) {
   return (
     <li
-      className="absolute top-0 left-0 w-full flex justify-start items-center p-4"
+      className="absolute top-0 left-0 w-full flex justify-start items-center p-4 border-b border-slate-600"
       style={{
         height: `${virtualItem.size}px`,
         transform: `translateY(${virtualItem.start}px)`,

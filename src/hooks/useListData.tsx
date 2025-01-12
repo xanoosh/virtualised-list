@@ -6,7 +6,12 @@ const getListDataQuery = (count: number) => ({
   staleTime: 1000 * 60 * 5,
 });
 
+function timeout(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function getListData(count: number) {
+  await timeout(1000);
   try {
     const response = await fetch(
       `https://dummyjson.com/quotes?limit=${count}`,
