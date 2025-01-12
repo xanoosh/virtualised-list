@@ -1,6 +1,6 @@
 import tanstackLogo from './assets/tanstack-logo.png';
 import './App.css';
-import List from './components/List';
+import List from './components/VirtualisedList';
 
 function App() {
   return (
