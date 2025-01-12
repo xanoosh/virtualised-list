@@ -1,20 +1,38 @@
 import tanstackLogo from './assets/tanstack-logo.png';
 import './App.css';
-import List from './components/VirtualisedList';
+import VirtualisedList from './components/VirtualisedList';
+import { useListData } from './hooks/useListData';
+import SkeletonLoader from './components/Loader';
 
 function App() {
+  const { data, isLoading } = useListData({
+    count: 500,
+  });
+
+  console.log('data', data);
+
   return (
     <>
       <div>
-        <img src={tanstackLogo} className="logo" alt="Tanstack logo" />
+        <img
+          src={tanstackLogo}
+          className="w-20 h-20 mx-auto"
+          alt="Tanstack logo"
+        />
       </div>
       <h1>Virtualised List</h1>
       <p>
-        This is a virtualised list that uses the react-window library to render
-        a list of items.
+        This is a virtualised list that uses the react-vitualise tanstack
+        library to render a list of items.
       </p>
       <div className="card">
-        <List />
+        <SkeletonLoader />
+        {isLoading ? (
+          <>
+            <SkeletonLoader />
+          </>
+        ) : null}
+        {!data ? null : <VirtualisedList listItems={data} />}
       </div>
     </>
   );

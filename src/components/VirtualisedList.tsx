@@ -1,14 +1,13 @@
 import { useRef } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { useListData } from '../hooks/useListData';
 import VirtualisedListElement from './VirtualisedListElement';
 
-export default function VirtualisedList() {
+export default function VirtualisedList({
+  listItems,
+}: {
+  listItems: { id: number; quote: string; author: string }[];
+}) {
   const parentRef = useRef<HTMLDivElement>(null);
-
-  const { data: listItems } = useListData({
-    count: 500,
-  });
 
   const virtualizer = useVirtualizer({
     count: listItems?.length || 0,
@@ -18,7 +17,6 @@ export default function VirtualisedList() {
 
   const virtualItems = virtualizer.getVirtualItems();
   const totalSize = virtualizer.getTotalSize();
-  if (!listItems) return null;
 
   return (
     <>
