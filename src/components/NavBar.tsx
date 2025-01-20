@@ -7,7 +7,7 @@ export default function NavBar({
 }) {
   if (!navigationArray) return null;
   return (
-    <nav className="w-full sm:px-12 flex h-14 items-strech justify-around border-b-4 border-slate-700">
+    <nav className="w-full flex h-14 items-strech justify-around border-b-4 border-slate-700">
       {navigationArray.map((navigationElement) => {
         return (
           <NavLink
