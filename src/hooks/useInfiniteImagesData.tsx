@@ -1,9 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 const getImagesDataQuery = (page: number) => ({
-  queryKey: ['list-data', page],
+  queryKey: ['images-data', page],
   queryFn: () => getImagesData(page),
-  keepPreviousData: true,
+  initialPageParam: 1,
+  // getNextPageParam: (lastPage: { id: string; url: string; author: string }[]) =>
+  //   lastPage,
+  getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
   staleTime: 1000 * 60 * 5,
 });
 
@@ -41,5 +44,5 @@ async function getImagesData(page: number) {
 }
 
 export function useInfiniteImagesData({ page }: { page: number }) {
-  return useQuery(getImagesDataQuery(page));
+  return useInfiniteQuery(getImagesDataQuery(page));
 }
