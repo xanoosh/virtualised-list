@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import tanstackLogo from './assets/tanstack-logo.png';
 
 function App() {
   return (
@@ -12,6 +13,13 @@ function App() {
         ]}
       />
       <section className="flex flex-col gap-4 items-center justify-center p-4">
+        <div>
+          <img
+            src={tanstackLogo}
+            className="w-20 h-20 mx-auto"
+            alt="Tanstack logo"
+          />
+        </div>
         <Outlet />
       </section>
     </div>

@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 
-const getImagesDataQuery = (page: number, limit: number) => ({
-  queryKey: ['list-data', page, limit],
-  queryFn: () => getImagesData(page, limit),
+const getImagesDataQuery = (page: number) => ({
+  queryKey: ['list-data', page],
+  queryFn: () => getImagesData(page),
   keepPreviousData: true,
   staleTime: 1000 * 60 * 5,
 });
 
-async function getImagesData(page: number, limit: number) {
+async function getImagesData(page: number) {
   try {
     const response = await fetch(
-      `https://picsum.photos/v2/list?page=${page}&limit=${limit}`,
+      `https://picsum.photos/v2/list?page=${page}&limit=8`,
       {
         method: 'GET',
       }
@@ -40,12 +40,6 @@ async function getImagesData(page: number, limit: number) {
   }
 }
 
-export function useImagesData({
-  page,
-  limit,
-}: {
-  page: number;
-  limit: number;
-}) {
-  return useQuery(getImagesDataQuery(page, limit));
+export function useInfiniteImagesData({ page }: { page: number }) {
+  return useQuery(getImagesDataQuery(page));
 }
