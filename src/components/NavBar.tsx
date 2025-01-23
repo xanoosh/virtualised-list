@@ -8,9 +8,10 @@ export default function NavBar({
   if (!navigationArray) return null;
   return (
     <nav className="w-full flex h-14 items-strech justify-around border-b-4 border-slate-700">
-      {navigationArray.map((navigationElement) => {
+      {navigationArray.map((navigationElement, i) => {
         return (
           <NavLink
+            key={i}
             to={navigationElement.path}
             end
             className={({ isActive }) => {

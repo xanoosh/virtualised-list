@@ -1,14 +1,9 @@
 import ImageComponent from '../components/ImageComponent';
 import { useInfiniteImagesData } from '../hooks/useInfiniteImagesData';
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function LazyLoadPage() {
-  const [page, setPage] = useState(1);
-
-  const { data, isLoading, fetchNextPage } = useInfiniteImagesData({
-    page,
-  });
-  console.log(data);
+  const { data, isLoading, fetchNextPage } = useInfiniteImagesData();
   return (
     <div className="text-center flex flex-col gap-4">
       <h1 className="text-4xl font-semibold">Lazy load images</h1>
@@ -39,8 +34,7 @@ export default function LazyLoadPage() {
           ))}
         </div>
       )}
-      <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
-      <button onClick={() => fetchNextPage}>Fetch i guess</button>
+      <button onClick={() => fetchNextPage()}>Fetch i guess</button>
     </div>
   );
 }
