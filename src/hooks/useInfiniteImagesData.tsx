@@ -18,7 +18,7 @@ const getImagesDataQuery = () => ({
 async function getImagesData(page: number) {
   try {
     const response = await fetch(
-      `https://picsum.photos/v2/list?page=${page}&limit=8`,
+      `https://picsum.photos/v2/list?page=${page}&limit=${page === 1 ? 12 : 8}`,
       {
         method: 'GET',
       }
