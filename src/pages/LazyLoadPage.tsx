@@ -1,9 +1,11 @@
 import ImageComponent from '../components/ImageComponent';
+import Loader from '../components/Loader';
 import { useInfiniteImagesData } from '../hooks/useInfiniteImagesData';
 import React from 'react';
 
 export default function LazyLoadPage() {
-  const { data, isLoading, fetchNextPage } = useInfiniteImagesData();
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } =
+    useInfiniteImagesData();
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     if (
@@ -22,7 +24,7 @@ export default function LazyLoadPage() {
         images from the picsum API. scroll down to load more images
       </p>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader className="w-full h-80 flex justify-center items-center" />
       ) : (
         <div
           className="grid grid-cols-4 gap-4 h-80 overflow-y-auto w-full"
@@ -45,6 +47,9 @@ export default function LazyLoadPage() {
               )}
             </React.Fragment>
           ))}
+          {isFetchingNextPage && (
+            <Loader className="w-full flex justify-center items-center col-span-4 py-4" />
+          )}
         </div>
       )}
     </div>

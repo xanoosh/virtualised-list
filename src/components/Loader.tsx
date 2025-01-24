@@ -1,6 +1,10 @@
 import { Oval } from 'react-loader-spinner';
 
-export default function Loader() {
+export default function Loader({
+  className = 'h-[100vh] w-[100vw] flex justify-center items-center',
+}: {
+  className?: string | undefined;
+}) {
   return (
     <Oval
       visible={true}
@@ -10,7 +14,7 @@ export default function Loader() {
       color="#646cff"
       secondaryColor="#646cff"
       ariaLabel="oval-loading"
-      wrapperClass="h-[100vh] w-[100vw] flex justify-center items-center"
+      wrapperClass={className}
     />
   );
 }
