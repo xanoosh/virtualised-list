@@ -10,7 +10,7 @@ const getImagesDataQuery = () => ({
   queryKey: ['images-data'],
   initialPageParam: 1,
   queryFn: ({ pageParam }: { pageParam: number }) => getImagesData(pageParam),
-  getNextPageParam: (lastPage: PageElement[], pages: PageElement[][]) => {
+  getNextPageParam: (_lastPage: PageElement[], pages: PageElement[][]) => {
     return pages.length + 1;
   },
 });
