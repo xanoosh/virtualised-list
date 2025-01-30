@@ -24,10 +24,10 @@ export default function LazyLoadPage() {
         images from the picsum API. scroll down to load more images
       </p>
       {isLoading ? (
-        <Loader className="w-full h-80 flex justify-center items-center" />
+        <Loader className="w-full md:h-80 h-50 flex justify-center items-center" />
       ) : (
         <div
-          className="grid grid-cols-4 gap-4 h-80 overflow-y-auto w-full"
+          className="grid md:grid-cols-4 grid-cols-3 gap-4 md:h-80 h-60 overflow-y-auto w-full"
           onScroll={handleScroll}
         >
           {data?.pages.map((group, i) => (

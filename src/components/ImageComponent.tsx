@@ -7,7 +7,7 @@ export default function ImageComponent({
 }) {
   return (
     <div
-      className="h-40 border-white rounded-md text-white bg-cover bg-no-repeat bg-center"
+      className="sm:h-40 h-32 border-white rounded-md text-white bg-cover bg-no-repeat bg-center"
       style={{ backgroundImage: `url(${url})` }}
     >
       <div className="w-full h-full bg-black/50 flex items-center justify-center text-white bg-cover bg-no-repeat bg-center">
